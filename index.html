@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=`, initial-scale=1.0">
+    <title>Calculadora</title>
+    <style>
+        body {
+            display: grid;
+            height: 100vh;
+            place-items: center;
+        }
+        .container {
+            border-radius: 9px;
+            background-color: #f4f4f4;
+            border: 1px solid #ccc;
+            padding: 12px;
+            width: 300px;
+            height: 330px;;
+        }
+        .keys {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 10px;
+            padding: 10px;
+            margin: auto;
+        }
+        .button {
+            height: 60px;
+            padding: 5px;
+            background-color: #fff;
+            border-radius: 3px;
+            border: 1px solid #c4c4c4;
+            background-color: transparent;
+            font-size: 2rem;
+            color: #333;
+            background-image: linear-gradient(to bottom, transparent, transparent 50%, rgba(0,0,0,.04));
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,.05), inset 0 1px 0 0 rgba(255,255,255,.45), inset 0 -1px 0 0 rgba(255,255,255,.15), 0 1px 0 0 rgba(255,255,255,.15);
+            text-shadow: 0 1px rgba(255,255,255,.4);
+        }
+        input {
+            outline: none;
+            border: 1px solid transparent;
+        }
+        .button:hover{
+            background-color: #eaeaea;
+        }
+        .operator{
+            font-size: 1.4rem;
+            background-color: rgb(107, 100, 240);
+            color: white;
+        }
+        .clear {
+            background-color: #fe8616;
+            border-color: #f69234;
+            color: white;
+            width: 64px;
+            height: 40px;
+        }
+        .clear:hover {
+            background-color: #f17377;
+        }
+        .equal-sign {
+            background-color: #fe8616;
+            border-color: #25a8e0;
+            color: white;
+        }
+        .equal-sign:hover {
+            background-color: #4e9ed4;
+        }
+        .screen {
+            background-color:rgb(107, 100, 240);
+            border-radius: 5px;
+            justify-content: left;
+            color: white;
+            font-size: medium;
+            width: 88%;
+            height: 30%;
+            cursor: default;
+            padding: 10px; 
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <table>
+            <td colspan="3"><input type="text" id="result" class="screen"></td>
+            <td><input type="button" value="C" onclick="clearScreen()" class="clear" /></td>
+        </table>
+        <div class="keys">
+            <input type="button" class="button" value="7" onclick="display('7')">
+            <input type="button" class="button" value="8" onclick="display('8')">
+            <input type="button" class="button" value="9" onclick="display('9')">
+            <input type="button" class="operator" value="/" onclick="display('/')">
+            <input type="button" class="button" value="4" onclick="display('4')">
+            <input type="button" class="button" value="5" onclick="display('5')">
+            <input type="button" class="button" value="6" onclick="display('6')">
+            <input type="button" class="operator" value="*" onclick="display('*')">
+            <input type="button" class="button" value="1" onclick="display('1')">
+            <input type="button" class="button" value="2" onclick="display('2')">
+            <input type="button" class="button" value="3" onclick="display('3')">
+            <input type="button" class="operator" value="-" onclick="display('-')">
+            <input type="button" class="button" value="0" onclick="display('0')">
+            <input type="button" class="button" value="." onclick="display('.')">
+            <input type="button" class="button equal-sign" value="=" onclick="solve()">
+            <input type="button" class="operator" value="+" onclick="display('+')">
+        </div>
+    </div>
+    <script>
+        function display(val) {
+            document.getElementById("result").value += val;
+            return val;
+        }
+        function solve() {
+            let x = document.getElementById("result").value;
+            let y = eval(x);
+            document.getElementById("result").value = y;
+            return y;
+        }
+        function clearScreen() {
+            document.getElementById("result").value = "";
+        }
+    </script>
+</body>
+</html>
